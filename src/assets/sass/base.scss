@@ -1,0 +1,97 @@
+@import "var";
+@import "googleIcons";
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $normal-ffamily;
+  direction: ltr;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $header-ffamily;
+}
+
+.btn{
+  font-family: $header-ffamily;
+}
+
+#app-header {
+  background-image: url("./assets/imgs/background.png");
+  background-color: rgb(88, 173, 231);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 500px;
+  color: white;
+
+  p {
+    background-color: black;
+    padding: 1.7em;
+  }
+}
+
+.note {
+  border-left: 2px solid $orange;
+  padding-left: 1em;
+
+}
+
+.box-shadow {
+  box-shadow: 0 0 30px -2px grey;
+}
+
+.grid {
+  transition: all 300ms ease;
+  padding: 1em;
+  background-color: white;
+
+  &:first-child {
+    box-shadow: 0 0 30px -2px grey;
+  }
+
+  &:last-child {
+    box-shadow: 12px 0 30px -12px grey;
+  }
+
+  .grid-header {
+    position: relative;
+
+    .grid-icon {
+      transition: all 300ms ease;
+      position: absolute;
+      top: 0;
+      right: 0.3em;
+    }
+  }
+
+  &:hover {
+    background-color: whitesmoke;
+
+    .grid-icon {
+      color: $orange;
+    }
+  }
+}
+
+#main-content {
+  margin-top: -3em;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+#resultGrid{
+  margin-bottom: -6em;
+  z-index: 150;
+}
+
+footer {
+  min-height: 200px;
+  padding: 4em 2em 2em 2em;
+  background-color: rgb(1, 14, 32);
+  color: $orange;
+}

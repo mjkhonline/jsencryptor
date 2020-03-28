@@ -1,6 +1,6 @@
 {
   "name": "jsencryptor",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -8,7 +8,9 @@
   },
   "dependencies": {
     "core-js": "^3.6.4",
-    "vue": "^2.6.11"
+    "sweetalert2": "^9.10.6",
+    "vue": "^2.6.11",
+    "vue-scrollto": "^2.17.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.2.0",
