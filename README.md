@@ -1,5 +1,5 @@
-# jsencryptor
-
+# JS Encryptor
+a project by Mohammad Javad Khademian 
 ## Project setup
 ```
 npm install

@@ -28,7 +28,7 @@
                 <p class="note">
                     <b>Decrypted Secret Message:</b><br/>
                     {{decryptedData}}<br/>
-                    <b>Authentication Tag:</b><br/>
+                    <b>AAD:</b><br/>
                     {{authenticationData}}
                 </p>
                 <p v-if="authenticationData"><i class="material-icons text-success">beenhere</i>
@@ -88,7 +88,7 @@
                     v: '1',
                 };
                 try {
-                    this.decryptedData = AesInterface.methods.decrypt(data.key, options);
+                    this.decryptedData = AesInterface.methods.decryptByPassword(data.password, options);
                     this.authenticationData = AesInterface.methods.decodeAuthenticationData(data.aad);
                     this.resultFor = 'decryption';
                     VueScrollTo.scrollTo('#resultRow', 500, {'easing': 'ease-in-out'});

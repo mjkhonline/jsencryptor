@@ -13,7 +13,7 @@
             </p>
         </div>
         <div id="footer_bar" class="col-12">
-            <p class="text-center">Developer with <i class="material-icons text-danger">favorite</i> by
+            <p class="text-center">Developed with <i class="material-icons text-danger">favorite</i> by
                 <a href="tel:+989362879026" title="Call Developer">mjkhonline</a>
             </p>
         </div>

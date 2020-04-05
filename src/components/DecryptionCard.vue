@@ -21,9 +21,15 @@
                            :class="{'is-invalid':errors.iv}">
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Secret Key"
-                           aria-label="Message Secret Key" v-model="formInput.key"
-                           :class="{'is-invalid':errors.key}">
+                    <input :type="isPasswordVisible ? 'text':'password'"
+                           class="form-control" placeholder="Password"
+                           aria-label="Password" v-model="formInput.password"
+                           :class="{'is-invalid':errors.password}">
+                    <div class="input-group-append clickable" @click="changePasswordVisibility">
+                        <div class="input-group-text">
+                            <i class="material-icons">visibility{{isPasswordVisible ? '':'_off'}}</i>
+                        </div>
+                    </div>
                 </div>
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Salt (optional)"
@@ -49,24 +55,25 @@
         data() {
             return {
                 formInput: {
-                    key: '',
+                    password: '',
                     iv: '',
                     salt: '',
                     aad: '',
                     cipheredText: ''
                 },
                 errors: {
-                    key: false,
+                    password: false,
                     cipheredText: false,
                     iv: false,
-                }
+                },
+                isPasswordVisible:false
             }
         },
         methods: {
             submit() {
                 /*for (let error in this.errors)
                     error = false;*/
-                this.errors.key = false;
+                this.errors.password = false;
                 this.errors.cipheredText = false;
                 this.errors.iv = false;
                 if (this.formValidation()) {
@@ -75,8 +82,8 @@
             },
             formValidation() {
                 let valid = true;
-                if (!this.formInput.key) {
-                    this.errors.key = true;
+                if (!this.formInput.password) {
+                    this.errors.password = true;
                     valid = false;
                 }
                 if (!this.formInput.cipheredText) {
@@ -92,10 +99,14 @@
             getFormData(cipheredText = '', iv = '', salt = '', aad = '') {
                 this.formInput = {
                     iv, salt, aad, cipheredText,
-                    key: this.formInput.key
+                    password: this.formInput.password
                 };
 
-            }
+            },
+            changePasswordVisibility() {
+                this.isPasswordVisible = !this.isPasswordVisible;
+                this.$refs.passwordInput.focus();
+            },
         }
     }
 </script>
