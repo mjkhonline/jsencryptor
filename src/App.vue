@@ -6,36 +6,39 @@
             <encryption-card @encryptionFormSubmitted="encrypt"/>
             <decryption-card ref="decrCard" @decryptionFormSubmitted="decrypt"/>
         </div>
-        <div class="row justify-content-center my-5" id="resultRow">
-            <result-card v-if="resultFor === 'encryption'">
-                <p class="note">
-                    <b>Authentication Tag:</b> {{cipherData.adata}}<br/>
-                    <b>Ciphered Message:</b> {{cipherData.ct}}
-                </p>
-                <p>
-                    <b>Additional Data:</b><br/>
-                    iv: {{cipherData.iv}}<br/>
-                    salt: {{cipherData.salt}}<br/>
-                    v: {{cipherData.v}}, iter: {{cipherData.iter}}, KS: {{cipherData.ks}}, TS: {{cipherData.ts}}, Mode:
-                    {{cipherData.mode}}, cipher: {{cipherData.cipher}}<br/>
-                </p>
-                <p>successfully encrypted @{{new Date().toString()}}</p>
-                <button type="button" class="btn btn-info" @click="copyToDecryptionForm">
-                    Copy Data to Decryption Form
-                </button>
-            </result-card>
-            <result-card v-if="resultFor === 'decryption'">
-                <p class="note">
-                    <b>Decrypted Secret Message:</b><br/>
-                    {{decryptedData}}<br/>
-                    <b>AAD:</b><br/>
-                    {{authenticationData}}
-                </p>
-                <p v-if="authenticationData"><i class="material-icons text-success">beenhere</i>
-                    The authenticity of the message is confirmed.</p>
-                <p>successfully decrypted @{{new Date().toString()}}</p>
-            </result-card>
-        </div>
+       <!-- <transition name="fade">-->
+            <div class="row justify-content-center my-5" id="resultRow">
+                <result-card v-if="resultFor === 'encryption'">
+                    <p class="note">
+                        <b>Authentication Tag:</b> {{cipherData.adata}}<br/>
+                        <b>Ciphered Message:</b> {{cipherData.ct}}
+                    </p>
+                    <p>
+                        <b>Additional Data:</b><br/>
+                        iv: {{cipherData.iv}}<br/>
+                        salt: {{cipherData.salt}}<br/>
+                        v: {{cipherData.v}}, iter: {{cipherData.iter}}, KS: {{cipherData.ks}}, TS: {{cipherData.ts}},
+                        Mode:
+                        {{cipherData.mode}}, cipher: {{cipherData.cipher}}<br/>
+                    </p>
+                    <p>successfully encrypted @{{new Date().toString()}}</p>
+                    <button type="button" class="btn btn-info" @click="copyToDecryptionForm">
+                        Copy Data to Decryption Form
+                    </button>
+                </result-card>
+                <result-card v-if="resultFor === 'decryption'">
+                    <p class="note">
+                        <b>Decrypted Secret Message:</b><br/>
+                        {{decryptedData}}<br/>
+                        <b>AAD:</b><br/>
+                        {{authenticationData}}
+                    </p>
+                    <p v-if="authenticationData"><i class="material-icons text-success">beenhere</i>
+                        The authenticity of the message is confirmed.</p>
+                    <p>successfully decrypted @{{new Date().toString()}}</p>
+                </result-card>
+            </div>
+        <!--</transition>-->
         <!-- main content/> -->
         <footer-row/>
     </div>
@@ -120,5 +123,17 @@
 
 <style lang="scss">
     @use "./assets/sass/base";
+
+    .fade-enter{
+        opacity: 0;
+    }
+    .fade-enter-active{
+        transition: opacity 600ms;
+    }
+    .fade-leave{}
+    .fade-leave-active{
+        transition: opacity 400ms;
+        opacity: 0;
+    }
 
 </style>

@@ -22,7 +22,7 @@
                 </div>
                 <div class="input-group mb-3">
                     <input :type="isPasswordVisible ? 'text':'password'"
-                           class="form-control" placeholder="Password"
+                           class="form-control" placeholder="Password" ref="passwordInput"
                            aria-label="Password" v-model="formInput.password"
                            :class="{'is-invalid':errors.password}">
                     <div class="input-group-append clickable" @click="changePasswordVisibility">
