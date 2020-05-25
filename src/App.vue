@@ -6,9 +6,9 @@
             <encryption-card @encryptionFormSubmitted="encrypt"/>
             <decryption-card ref="decrCard" @decryptionFormSubmitted="decrypt"/>
         </div>
-       <!-- <transition name="fade">-->
-            <div class="row justify-content-center my-5" id="resultRow">
-                <result-card v-if="resultFor === 'encryption'">
+           <div class="row justify-content-center my-5" id="resultRow">
+                <transition  name="fade" type="transition" mode="out-in">
+                <result-card v-if="resultFor === 'encryption'" key="resulftForEncryption">
                     <p class="note">
                         <b>Authentication Tag:</b> {{cipherData.adata}}<br/>
                         <b>Ciphered Message:</b> {{cipherData.ct}}
@@ -26,7 +26,7 @@
                         Copy Data to Decryption Form
                     </button>
                 </result-card>
-                <result-card v-if="resultFor === 'decryption'">
+                <result-card v-if="resultFor === 'decryption'" key="resulftForDecryption">
                     <p class="note">
                         <b>Decrypted Secret Message:</b><br/>
                         {{decryptedData}}<br/>
@@ -37,8 +37,8 @@
                         The authenticity of the message is confirmed.</p>
                     <p>successfully decrypted @{{new Date().toString()}}</p>
                 </result-card>
+                </transition>
             </div>
-        <!--</transition>-->
         <!-- main content/> -->
         <footer-row/>
     </div>
@@ -128,11 +128,11 @@
         opacity: 0;
     }
     .fade-enter-active{
-        transition: opacity 600ms;
+        transition: opacity 500ms;
     }
     .fade-leave{}
     .fade-leave-active{
-        transition: opacity 400ms;
+        transition: opacity 300ms;
         opacity: 0;
     }
 
